@@ -25,11 +25,11 @@ class MyTeamViewSet(viewsets.ViewSet):
     def list(self,request):
         stu= MyTeam.objects.all()
         serializer= MyTeamSerializer(stu,many=True)  
-        # context={
-        #     'stu':stu
-        # }   
-        # return render(request,'index_2.html',context)
-        return Response(serializer.data)
+        context={
+            'stu':stu
+        }   
+        return render(request,'edit.html',context)
+        # return Response(serializer.data)
     # GET specific student
     def retrieve(self, request, pk=None):
         team_id=pk

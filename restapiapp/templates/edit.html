@@ -47,33 +47,44 @@
         </div>
     </nav>
 
-    <table class="table table-hover">
-        <thead>
-          <tr>
-            {% comment %} <th scope="col">id</th> {% endcomment %}
-            <th scope="col">Project Name</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Manager</th>
-            <th scope="col">Manager Email</th>
-            <th scope="col">Status</th>
-          </tr>
-        </thead>
-        {% for st in stu %}
-        <tbody>
-          <tr>
-            {% comment %} <th scope="row">{{st.proj_id}}</th> {% endcomment %}
-            {% comment %} <td>{{st.proj_id}}</td> {% endcomment %}
-            <td>{{st.proj_name}}</td>
-            <td>{{st.proj_start_date}}</td>
-            <td>{{st.proj_end_date}}</td>
-            <td>{{st.manager_name}}</td>
-            <td>{{st.manager_email}}</td>
-            <td>{{st.status}}</td>
-          </tr>
-        </tbody>
-        {% endfor %}
-    </table>
+    <form id="myteam" action="" method="post">
+        {% csrf_token %} 
+        <div class="form-row">
+          <div class="col-md-4 mb-3">
+            <label for="validationServer01">Team name</label>
+            <input type="text" class="form-control is-valid" id="team_name" name="team_name" placeholder="Team name" value="{{st.team_name}}" required>
+            </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Team start date</label>
+            <input type="date" class="form-control is-valid" id="team_start_date" name="team_start_date" placeholder="Team Start date" value="" required>
+     
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Team End date</label>
+            <input type="date" class="form-control is-valid" id="team_end_date" name="team_end_date" placeholder="Team end date" value="Otto" required>
+     
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Team Lead</label>
+            <input type="text" class="form-control is-valid" id="team_lead" name="team_lead" placeholder="Team Lead" value="Team Lead" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Team Lead Email</label>
+            <input type="email" class="form-control is-valid" id="team_lead_email" name="team_lead_email" placeholder="Team Lead Email" value="Team Lead Email" required>
+          </div>
+          <div class="col-md-4 mb-3">
+            <label for="validationServer02">Team Lead</label>
+            <input type="text" class="form-control is-valid" id="proj_name" name="proj_name" placeholder="Project Name" value="Project Name" required>
+          </div>
+
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+            
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" href="success.html">Submit form</button>
+      </form>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
