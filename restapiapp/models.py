@@ -32,7 +32,7 @@ class TeamMember(models.Model):
     name=models.CharField(max_length=50)
     role=models.CharField(max_length=50)
     email=models.EmailField()
-
+# *************************************************************************
 class MyProject(models.Model):
     proj_id=models.AutoField(primary_key=True)
     proj_name=models.CharField(max_length=100)
@@ -44,7 +44,7 @@ class MyProject(models.Model):
     desc=models.CharField(max_length=200)
 
     def __str__(self):
-        return self.proj_name
+        return str(self.proj_name)
 
 class MyTeam(models.Model):
     team_id=models.AutoField(primary_key=True)
@@ -56,7 +56,7 @@ class MyTeam(models.Model):
     proj_name=models.ForeignKey(MyProject,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.proj_name
+        return str(self.team_name)
 
 class MyTeamMember(models.Model):
     team_member_id=models.AutoField(primary_key=True)
@@ -66,5 +66,5 @@ class MyTeamMember(models.Model):
     role=models.CharField(max_length=50)
     email=models.EmailField()
 
-    def __str__(self):
-        return self.team_name
+    # def __str__(self):
+    #     return str(self.team_name)
