@@ -25,11 +25,11 @@ class MyTeamViewSet(viewsets.ViewSet):
     def list(self,request):
         stu= MyTeam.objects.all()
         serializer= MyTeamSerializer(stu,many=True)  
-        context={
-            'stu':stu
-        }   
-        return render(request,'edit.html',context)
-        # return Response(serializer.data)
+        # context={
+        #     'stu':stu
+        # }   
+        # return render(request,'edit.html',context)
+        return Response(serializer.data)
     # GET specific student
     def retrieve(self, request, pk=None):
         team_id=pk
@@ -442,11 +442,7 @@ def home_page(request):
 # ------------------------------THIS IS FUNCTION TO SEND MAILS-----------------------
 
 def sending_email():
-<<<<<<< HEAD
     url = "http://127.0.0.1:8000/my_team_member_api"
-=======
-    url = "http://127.0.0.1:8000/my_team_member_api/"
->>>>>>> 8e827e57588981d93a73ccc2edad958ca63b7b8a
     req = requests.get(url) 
     response = req.json()
     print("the length of API is in sending mail function ==>>" , len(response))
