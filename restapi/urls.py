@@ -5,28 +5,33 @@ from rest_framework import routers
 from restapiapp import views
 from rest_framework.routers import DefaultRouter
 from restapiapp.views import *
+from SIGN_UP.views import sign_up
 
 # creating router object
 router= DefaultRouter()
 
 # register ViewSet with router
-router.register('studentapi',views.StudentViewSet,basename='student')
-router.register('team_api',views.TeamViewSet,basename='team')
-router.register('team_member_api',views.TeamMemberViewSet,basename='team_member')
-router.register('project_api',views.ProjectViewSet,basename='project')
-router.register(r'my_project_api',MyProjectViewSet,basename='myproject')
-router.register(r'my_team_api',MyTeamViewSet,basename='myteammember')
-router.register(r'my_team_member_api',MyTeamMemberViewSet,basename='myteam')
+# commenting this part
+# router.register('studentapi',views.StudentViewSet,basename='student')
+# router.register('team_api',views.TeamViewSet,basename='team')
+# router.register('team_member_api',views.TeamMemberViewSet,basename='team_member')
+# router.register('project_api',views.ProjectViewSet,basename='project')
+# router.register(r'my_project_api',MyProjectViewSet,basename='myproject')
+# router.register(r'my_team_api',MyTeamViewSet,basename='myteammember')
+# router.register(r'my_team_member_api',MyTeamMemberViewSet,basename='myteam')
+# -------------------------------------------------------------------------------
 # router.register('my_project_api',views.MyProjectViewSet,basename='myteam')
 # router.register('my_team_api',views.MyTeamViewSet,basename='myproject')
 # router.register('my_team_member_api',views.MyTeamMemberViewSet,basename='myteammember')
 
 urlpatterns = [
+    path('', include('SIGN_UP.urls')) ,
     path('admin/', admin.site.urls),
+    path('', include('restapiapp.urls')) ,
     path("home/" , views.home_page) ,
-     path("home/" , views.sending_email) ,
+    path("home/" , views.sending_email) ,
     path('admin/', admin.site.urls),
-    path('', include(router.urls)),
+    # path('', include(router.urls)),
     path('auth/',include('rest_framework.urls',namespace='rest_framework')),
     # path('api-auth/', include('rest_framework.urls')),
     # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),

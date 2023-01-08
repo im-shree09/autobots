@@ -8,11 +8,13 @@
       rel="stylesheet"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    {% load static %}
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="{% static 'style.css' %}" />
+
   </head>
   <body>
     <!-- partial:index.partial.html -->
@@ -25,7 +27,7 @@
 
             <div class="heading">
               <h2>AFOUR</h2>
-              <p>AUTOBO</p>
+              <p>AUTOBOTS</p>
             </div>
             <div class="success-msg">
               <p>Congrats ! You are one of our members now</p>
@@ -36,14 +38,17 @@
           <div class="col-sm-6 form">
             <!-- Login Form -->
             <div class="login form-peice switched">
-              <form class="login-form" action="#" method="post">
+              <form class="login-form" action="/" method="post">
+                <!--  {{form.as_p}}  -->
                 <div class="form-group">
                   <label for="loginemail">Email Address</label>
                   <input
                     type="email"
+                    autofocus="off"
                     name="loginemail"
                     id="loginemail"
                     required
+                    autocomplete="off" 
                   />
                 </div>
 
@@ -51,14 +56,16 @@
                   <label for="loginPassword">Password</label>
                   <input
                     type="password"
+                    autofocus="off"
                     name="loginPassword"
                     id="loginPassword"
                     required
+                    autocomplete="off"
                   />
                 </div>
 
                 <div class="CTA">
-                  <input type="submit" value="Login" />
+                  <input type="submit" autofocus="off" value="Login" autocomplete="off" />
                   <a href="#" class="switch">New Here</a>
                 </div>
               </form>
@@ -67,11 +74,12 @@
 
             <!-- Signup Form -->
             <div class="signup form-peice">
-              <form class="signup-form" action="#" method="post">
+              <form class="signup-form" action="/" method="post">
+                <!-- {{form.as_p}} -->
                 <div class="form-group">
                   <label for="name">Full Name</label>
-                  <input type="text" name="username" id="name" class="name" />
-                  <span class="error"></span>
+                  <input type="text" name="username" id="name" class="name"  autocomplete="off" />
+                  <!-- <span class="error"></span> -->
                 </div>
 
                 <div class="form-group">
@@ -79,17 +87,19 @@
                   <input
                     type="email"
                     name="emailAddress"
+                    autofocus="off"
                     id="email"
                     class="email"
+                    autocomplete="off"
                   />
-                  <span class="error"></span>
+                  <!-- <span class="error"></span> -->
                 </div>
 
                 <div class="form-group">
                   <label for="phone"
                     >Phone Number - <small>Optional</small></label
                   >
-                  <input type="text" name="phone" id="phone" />
+                  <input type="text" name="phone" id="phone" autocomplete="off" />
                 </div>
 
                 <div class="form-group">
@@ -99,8 +109,9 @@
                     name="password"
                     id="password"
                     class="pass"
+                    autocomplete="off"
                   />
-                  <span class="error"></span>
+                  <!-- <span class="error"></span> -->
                 </div>
 
                 <div class="form-group">
@@ -110,12 +121,13 @@
                     name="passwordCon"
                     id="passwordCon"
                     class="passConfirm"
+                    autocomplete="off"
                   />
-                  <span class="error"></span>
+                  <!-- <span class="error"></span> -->
                 </div>
 
                 <div class="CTA">
-                  <input type="submit" value="Signup Now" id="submit" />
+                  <input type="submit" value="Signup Now" id="submit" autocomplete="off" />
                   <a href="#" class="switch">I have an account</a>
                 </div>
               </form>
@@ -127,7 +139,8 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <script src="./script.js"></script>
+    <script src="{% static 'script.js' %}"></script>
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
   </body>
 </html>
 

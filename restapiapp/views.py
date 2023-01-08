@@ -402,7 +402,7 @@ def home_page(request):
      
     print("-----------")
     print("the current time is:" , current_time)
-    url = "http://127.0.0.1:8000/team_member_api"
+    url = "http://127.0.0.1:8000/my_team_member_api"
     req = requests.get(url) 
     response = req.json()
     print("the length of API is" , len(response))
@@ -416,6 +416,7 @@ def home_page(request):
     print(email_list)
     url2 = "http://127.0.0.1:8000/project_api/"
     req2 = requests.get(url2)
+    print(req2)
     response2 = req2.json()
     print("this is UPDATE PART")
     print("the length of updates API is" , len(response2))
@@ -433,13 +434,14 @@ def home_page(request):
     #     fail_silently=False
     #     )
     # print("MAIL SENT")
+    # return HttpResponse("this is test")
     return HttpResponse(response)
 
 
 # ------------------------------THIS IS FUNCTION TO SEND MAILS-----------------------
 
 def sending_email():
-    url = "http://127.0.0.1:8000/team_member_api/"
+    url = "http://127.0.0.1:8000/my_team_member_api"
     req = requests.get(url) 
     response = req.json()
     print("the length of API is in sending mail function ==>>" , len(response))
@@ -476,3 +478,22 @@ def sending_email():
     print("mail sent")
     return HttpResponse("MAIL SENT")
 
+
+
+# -------------------------TEST VIEWS---------------------------------------------------------
+
+# from django.views.generic import TemplateView
+
+
+# class HomeView(TemplateView):
+#     template_name = 'app_users/index.html'
+
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         standards = Standard.objects.all()
+#         teachers = UserProfileInfo.objects.filter(user_type='teacher')
+#         events = Event.objects.all()
+#         context['standards'] = standards
+#         context['teachers'] = teachers
+#         context['events'] = events
+#         return context
