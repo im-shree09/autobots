@@ -4,11 +4,14 @@ from .forms import *
 from restapiapp.models import MyTeamMember
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
-from django.contrib.auth import authenticate , login
+from django.contrib.auth import authenticate , login , logout
 from restapiapp.views import MyProjectViewSet
 from rest_framework.response import Response
 from rest_framework import status,viewsets
 from restapiapp.serializers import *
+from django.views.generic import TemplateView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 # Create your views here.
 # class MyProjectViewSet(viewsets.ViewSet):
 #     # GET all students
@@ -63,40 +66,73 @@ from restapiapp.serializers import *
 #         return Response({'msg':'Data Deleted!'})
 
 def sign_up(request):
-    if request.method=='POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        password2 = request.POST.get('password2')
-        email = request.POST.get('email')
-        print(username , password)
-
-        if username and password and password2 and email:
-            if password != password2:
-                return HttpResponse("PASSWORD DID NOT MATCH")
-            else:
-                password = make_password(password=password)
-                user = User.objects.create(username = username , password = password , email = email)
-                user.save()
-                return render(request , 'login.html')
+    if request.user.is_authenticated:
+        return redirect('index')
     else:
-        form = signupform()
-    return render(request , 'register.html')
+        if request.method=='POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            password2 = request.POST.get('password2')
+            email = request.POST.get('email')
+            print(username , password)
+    
+            if username and password and password2 and email:
+                if password != password2:
+                    return HttpResponse("PASSWORD DID NOT MATCH")
+                else:
+                    password = make_password(password=password)
+                    user = User.objects.create(username = username , password = password , email = email)
+                    user.save()
+                    return redirect("login")
+                    # return render(request , 'login.html' , {"msg" : "Registration Success"})
+        # else:
+        #     form = signupform()
+        return render(request , 'register.html')
 
 
 def login_user(request):
-    if request.method=='POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        print(username , password)
-        
-        user = authenticate(username = username , password = password)
-        if user is not None:
-            # if user.is_active:
-            print(user)
-            login(request , user)
-            # MyProjectViewSet.list(user,method="GET")
-            # return render(request,'index.html')
-            return HttpResponse('Success!')
+    if request.user.is_authenticated:
+        return redirect('index')
+    else:
+        if request.method=='POST':
+            username = request.POST.get('username')
+            password = request.POST.get('password')
+            print(username , password)
+
+            user = authenticate(username = username , password = password)
+            if user is not None:
+                # if user.is_active:
+                print(user)
+                login(request , user)
+                # MyProjectViewSet.list(user,method="GET")
+                # return render(request,'index.html')
+                # return HttpResponse('Success!')
+                return redirect('index')
+            else:
+                return render(request ,"login.html" , {"msg" : "Invalid username and password"})    
         else:
-            return render(request ,"login.html" , {"msg" : "Invalid username and password"})    
-    return render(request , 'login.html')
+            return render(request , "login.html" , {"msg" : ""})
+        
+        # return render(request , 'login.html')
+
+
+def log_out(request):
+    logout(request)
+    return redirect('login')
+
+class HomeView(TemplateView):
+    template_name = 'index.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        stu= MyProject.objects.all()
+        context['stu'] = stu
+        return context
+
+
+    # @method_decorator(login_required)
+    # def dispatch(self, *args, **kwargs):
+    #     return super(HomeView, self).dispatch(*args, **kwargs)
+
+
+def project_list(request):
+    return render(request , 'project_list.html' , {"msg" : ""})
