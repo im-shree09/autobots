@@ -410,7 +410,7 @@ def home_page(request):
      
     print("-----------")
     print("the current time is:" , current_time)
-    url = "http://127.0.0.1:8000/my_team_member_api"
+    url = "http://127.0.0.1:8000/my_team_member_api/"
     req = requests.get(url) 
     response = req.json()
     print("the length of API is" , len(response))
@@ -422,7 +422,7 @@ def home_page(request):
         email_list.append(email)
     print("printing the list of the email")
     print(email_list)
-    url2 = "http://127.0.0.1:8000/my_project_api/"
+    url2 = "http://127.0.0.1:8000/project_api/"
     req2 = requests.get(url2)
     print(req2)
     response2 = req2.json()
@@ -449,7 +449,7 @@ def home_page(request):
 # ------------------------------THIS IS FUNCTION TO SEND MAILS-----------------------
 
 def sending_email():
-    url = "http://127.0.0.1:8000/my_team_member_api"
+    url = "http://127.0.0.1:8000/my_team_member_api/"
     req = requests.get(url) 
     response = req.json()
     print("the length of API is in sending mail function ==>>" , len(response))
@@ -460,7 +460,7 @@ def sending_email():
         print(email)
         email_list.append(email)
     print("printing the email list in sending mail function == >> " , email_list)
-    url2 = "http://127.0.0.1:8000/my_project_api/"
+    url2 = "http://127.0.0.1:8000/project_api/"
     req2 = requests.get(url2)
     response2 = req2.json()
     print("this is UPDATE PART")
