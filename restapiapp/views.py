@@ -21,7 +21,7 @@ from django.core.mail import send_mail
 
 
 class MyTeamViewSet(viewsets.ViewSet):
-    # GET all students
+    # GET all teams
     def list(self,request):
         stu= MyTeam.objects.all()
         serializer= MyTeamSerializer(stu,many=True)  
@@ -30,14 +30,14 @@ class MyTeamViewSet(viewsets.ViewSet):
         # }   
         # return render(request,'edit.html',context)
         return Response(serializer.data)
-    # GET specific student
+    # GET specific teams
     def retrieve(self, request, pk=None):
         team_id=pk
         if team_id is not None:
             team=MyTeam.objects.get(team_id=team_id)
             serializer=MyTeamSerializer(team)  
             return Response(serializer.data)
-    # POST student
+    # POST team
     def create(self, request):
         serializer=MyTeamSerializer(data=request.data)
         if serializer.is_valid():
@@ -80,13 +80,13 @@ class MyProjectViewSet(viewsets.ViewSet):
         context={
             'stu':stu
         }   
-        return render(request, 'index.html', context)
-        # return Response(serializer.data)
+        # return render(request, 'index.html', context)
+        return Response(serializer.data)
     # GET specific student
     def retrieve(self, request, pk=None):
         team_id=pk
         if team_id is not None:
-            team=MyProject.objects.get(team_id=team_id)
+            team=MyProject.objects.get(pk=team_id)
             serializer=MyProjectSerializer(team)  
             return Response(serializer.data)
     # POST student
@@ -99,8 +99,8 @@ class MyProjectViewSet(viewsets.ViewSet):
     
     # UPDATE totally
     def update(self,request, pk):
-        id=pk
-        stu=MyProject.objects.get(pk=id)
+        team_id=pk
+        stu=MyProject.objects.get(pk=team_id)
         serializer=MyProjectSerializer(stu,data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -136,9 +136,9 @@ class MyTeamMemberViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     # GET specific student
     def retrieve(self, request, pk=None):
-        team_id=pk
-        if team_id is not None:
-            team=MyTeamMember.objects.get(team_id=team_id)
+        id=pk
+        if id is not None:
+            team=MyTeamMember.objects.get(pk=id)
             serializer=MyTeamMemberSerializer(team)  
             return Response(serializer.data)
     # POST student
@@ -232,6 +232,9 @@ class StudentViewSet(viewsets.ViewSet):
 
 # ///////////////////////TEAM//////////////////
 class TeamViewSet(viewsets.ViewSet):
+    # Custom AUTH
+    # authentication_classes=[CustomAuthentication]
+    # permission_classes=[IsAuthenticated]
     # GET all students
     def list(self,request):
         stu= Team.objects.all()
@@ -287,6 +290,10 @@ class TeamViewSet(viewsets.ViewSet):
 
 # ///////////////////////TEAM MEMBER//////////////////
 class TeamMemberViewSet(viewsets.ViewSet):
+    # Custom AUTH
+    # authentication_classes=[CustomAuthentication]
+    # permission_classes=[IsAuthenticated]
+    
     # GET all students
     def list(self,request):
         stu= TeamMember.objects.all()
@@ -294,9 +301,9 @@ class TeamMemberViewSet(viewsets.ViewSet):
         return Response(serializer.data)
     # GET specific student
     def retrieve(self, request, pk=None):
-        id=pk
-        if id is not None:
-            team=TeamMember.objects.get(id=id)
+        team_id=pk
+        if team_id is not None:
+            team=TeamMember.objects.get(pk=team_id)
             serializer=TeamMemberSerializer(team)  
             return Response(serializer.data)
     # POST student

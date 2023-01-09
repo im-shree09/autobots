@@ -95,8 +95,8 @@ def login_user(request):
             print(user)
             login(request , user)
             # MyProjectViewSet.list(user,method="GET")
-            # return render(request,'index.html')
-            return HttpResponse('Success!')
+            return render(request,'index.html')
+            # return HttpResponse('Success!')
         else:
             return render(request ,"login.html" , {"msg" : "Invalid username and password"})    
     return render(request , 'login.html')
