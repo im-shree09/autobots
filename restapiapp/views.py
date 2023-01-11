@@ -19,7 +19,6 @@ import requests
 import datetime
 from django.core.mail import send_mail
 
-
 class MyTeamViewSet(viewsets.ViewSet):
     # GET all teams
     def list(self,request):
