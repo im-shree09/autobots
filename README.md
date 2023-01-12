@@ -4,6 +4,12 @@
 A brief description of what this project does and who it's for
 
 
+## Docker Container Image link
+
+```bash
+  https://hub.docker.com/repository/docker/nowsaymyname/autobots/general
+```
+    
 ## Installation
 
 Clone our-project with
@@ -36,12 +42,6 @@ Be on the folder of Manage.py & To deploy this project run
 
 ## Demo
 
-Insert gif or link to demo
-
-
-## Authors
-
-- [@im-shree09](https://github.com/im-shree09)
-
-
+Link to demo
+https://drive.google.com/file/d/1kXuYmAxSbPAaNNURf59HoDvhsakihuhT/view?usp=share_link
 

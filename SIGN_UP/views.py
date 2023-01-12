@@ -91,25 +91,19 @@ def sign_up(request):
 
 
 def login_user(request):
-    if request.user.is_authenticated:
-        return redirect('index')
-    else:
-        if request.method=='POST':
-            username = request.POST.get('username')
-            password = request.POST.get('password')
-            print(username , password)
-
-            user = authenticate(username = username , password = password)
-            if user is not None:
-                # if user.is_active:
-                print(user)
-                login(request , user)
-                # MyProjectViewSet.list(user,method="GET")
-                # return render(request,'index.html')
-                # return HttpResponse('Success!')
-                return redirect('index')
-            else:
-                return render(request ,"login.html" , {"msg" : "Invalid username and password"})    
+    if request.method=='POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        print(username , password)
+        
+        user = authenticate(username = username , password = password)
+        if user is not None:
+            # if user.is_active:
+            print(user)
+            login(request , user)
+            # MyProjectViewSet.list(user,method="GET")
+            return render(request,'index.html')
+            # return HttpResponse('Success!')
         else:
             return render(request , "login.html" , {"msg" : ""})
         

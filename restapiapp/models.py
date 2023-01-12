@@ -34,6 +34,7 @@ class TeamMember(models.Model):
     email=models.EmailField()
 # *************************************************************************
 class MyProject(models.Model):
+    # id = models.AutoField(primary_key=True,db_column='proj_id')
     proj_id=models.AutoField(primary_key=True)
     proj_name=models.CharField(max_length=100)
     proj_start_date= models.DateField()
@@ -60,7 +61,7 @@ class MyTeam(models.Model):
 
 class MyTeamMember(models.Model):
     team_member_id=models.AutoField(primary_key=True)
-    team_name=models.ForeignKey(MyTeam, on_delete=models.CASCADE)
+    team_name=models.ForeignKey("MyTeam", on_delete=models.CASCADE)
     # team_name=models.CharField(max_length=50)
     name=models.CharField(max_length=50)
     role=models.CharField(max_length=50)

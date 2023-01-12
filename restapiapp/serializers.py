@@ -42,13 +42,13 @@ class MyProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model=MyProject
         fields="__all__"
-        # fields=['proj_name','proj_start_date','proj_end_date','manager_name','manager_email','status','desc']
-
+        
+        
 class MyTeamSerializer(serializers.ModelSerializer):
     class Meta:
         model=MyTeam
         fields="__all__"
-        # fields=['proj_name','proj_start_date','proj_end_date','manager_name','manager_email','status','desc']
+        
 
 class MyTeamMemberSerializer(serializers.ModelSerializer):
     class Meta:

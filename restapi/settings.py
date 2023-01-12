@@ -43,10 +43,10 @@ INSTALLED_APPS = [
     'restapiapp',
     'django_apscheduler',
     'SIGN_UP',
-    # 'rest_framework.authtoken'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -146,6 +146,9 @@ REST_FRAMEWORK = {
     
 }
 
+CORS_ALLOWED_ORIGINS = [
+   'http://localhost:3000',
+]
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
