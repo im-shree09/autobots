@@ -574,6 +574,6 @@ def login(request):
         password = serializer.data.get('password')
         user = authenticate(username=username, password=password)
         if user is not None:
-            return Response({'msg': 'login Successfully'}, status=status.HTTP_200_OK)
+            return Response({'msg': 'login Successfully', }, status=status.HTTP_200_OK)
         return Response({'error': {'non_fields_error': 'email or password not valid'}}, status=status.HTTP_404_NOT_FOUND)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

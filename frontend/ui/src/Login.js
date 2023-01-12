@@ -17,6 +17,8 @@ const Login = () => {
             body: JSON.stringify(team)
         }).then(()=>{
             console.log('Successfully Logged in!');
+            localStorage.setItem('username',team.username);
+            console.log(localStorage.getItem('username'));
             setIsLoading(false);
             history.push('/team');
         })

@@ -2,6 +2,14 @@ import BlogList from './BlogList'
 import useFetch from './useFetch';
 
 const Home = () => {
+    const token=localStorage.getItem('username')
+    if(!token)
+    {
+        console.log(localStorage.getItem('username'));
+        window.location='/login'
+    }
+    // console.log(token);
+
     const {data:projs, isLoading,error} = useFetch('http://127.0.0.1:8000/my_project_api/')
     const {data:teams} = useFetch('http://127.0.0.1:8000/my_team_api/')
     return ( 
