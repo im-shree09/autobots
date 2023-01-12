@@ -8,13 +8,13 @@ const Navbar = () => {
     const logout=()=>{
         localStorage.setItem('username',"");
         console.log(localStorage.getItem('username'));
-        window.location='/login';
+        window.location='/';
     }
     return ( 
         <nav className="navbar">
             <h1>{name}</h1>
             <div className="links">
-                <a className="sub-name" href="/">Home</a>
+                <a className="sub-name" href="/home">Home</a>
                 <a className="sub-name" href="/team">Teams</a>
                 <a className="sub-name" href="/create-team">New Team</a>
                 <a className="sub-name" href="/create-team-members">New Member</a>

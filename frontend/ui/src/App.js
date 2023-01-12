@@ -13,6 +13,7 @@ import Edit from './Edit';
 import EditTeamMember from './EditTeamMember';
 import Login from './Login';
 import Signup from './Signup';
+import Incorrect from './Incorrect';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -22,11 +23,17 @@ function App() {
         <Navbar/>
         <div className="content">
           <Switch>
-            <Route exact path='/'>
+            <Route exact path='/home'>
               <Home/>
+            </Route>
+            <Route exact path='/'>
+              <Login/>
             </Route>
             <Route exact path='/login'>
               <Login/>
+            </Route>
+            <Route exact path='/incorrect'>
+              <Incorrect/>
             </Route>
             <Route exact path='/signup'>
               <Signup/>

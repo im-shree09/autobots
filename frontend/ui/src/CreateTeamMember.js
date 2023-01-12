@@ -11,7 +11,7 @@ const CreateTeamMember = () => {
     const history= useHistory();
 
     const login=()=>{
-        window.location='/login'
+        window.location='/'
     }
 
     const handleSubmit=(e)=>{
@@ -24,14 +24,13 @@ const CreateTeamMember = () => {
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)
         }).then(()=>{
-            console.log('New team added!');
+            console.log('New Member added!');
             setIsLoading(false);
             history.push('/team-members');
         })
     }
-
-    if(token>0){
-
+    // console.log(token)
+    if(token.length>0){
         return ( 
             <div className="create">
                 <h2>Add a new team member </h2>
@@ -66,15 +65,7 @@ const CreateTeamMember = () => {
                         onChange={(e)=>setTeam_name(e.target.value)}
                     >
                     </input>
-                    
-                    {/* <label>Blog Author</label>
-                    <select
-                        value={author}
-                        onChange={(e)=>setAuthor(e.target.value)}
-                    >
-                        <option value="mario">mario</option>
-                        <option value="yoshi">yoshi</option>
-                    </select> */}
+
                     {!isLoading && <button>Add Team</button>}
                     {isLoading && <button>Adding Team...</button>}
                 </form>

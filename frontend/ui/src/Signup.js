@@ -12,7 +12,7 @@ const Signup = () => {
     const history= useHistory();
 
     const login=()=>{
-        window.location='/login';
+        window.location='/';
     }
 
     const handleSubmit=(e)=>{
@@ -27,7 +27,7 @@ const Signup = () => {
         }).then(()=>{
             console.log('New team added!');
             setIsLoading(false);
-            history.push('/login');
+            history.push('/');
         })
     }
     return ( 

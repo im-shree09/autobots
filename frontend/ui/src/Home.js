@@ -14,7 +14,7 @@ const Home = () => {
     // }
     // console.log(token)
     const login=()=>{
-        window.location='/login'
+        window.location='/'
     }
     if(token.length>0){
         return ( 
