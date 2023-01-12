@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'restapiapp',
     'django_apscheduler',
     'SIGN_UP',
-    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -153,7 +152,7 @@ CORS_ALLOWED_ORIGINS = [
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'teamautobots09@gmail.com'
-EMAIL_HOST_PASSWORD = 'dqbgemmmkzzxdovu'
+EMAIL_HOST_USER = 'autobots815@gmail.com'
+EMAIL_HOST_PASSWORD = 'eagztgbnyqxskofv'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
