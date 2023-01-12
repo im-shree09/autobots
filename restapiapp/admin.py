@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student,Project,Team,TeamMember,MyProject,MyTeam,MyTeamMember
+from .models import Student,Project,Team,TeamMember,MyProject,MyTeam,MyTeamMember, Users
 # Register your models here.
 @admin.register(Student)
 class StudentAdmin(admin.ModelAdmin):
@@ -28,6 +28,10 @@ admin.site.register(MyTeamMember,MyTeamMemberAdmin)
 class MyProjectAdmin(admin.ModelAdmin):
     list_display=['proj_name','manager_name','desc']
 admin.site.register(MyProject,MyProjectAdmin)
+
+class UsersAdmin(admin.ModelAdmin):
+    list_display=['username','email','password','cpassword']
+admin.site.register(Users,UsersAdmin)
 # @admin.register(MyProject)
 # class ProjectAdmin(admin.ModelAdmin):
 #     list_display=['proj_name','manager_name','desc']
