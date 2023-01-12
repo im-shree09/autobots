@@ -5,6 +5,9 @@ import {Link} from 'react-router-dom'
 const ProjDetails = () => {
     const { id } = useParams();
     const {data:proj, error, isLoading} = useFetch('http://localhost:8000/my_project_api/' + id);
+    const team=()=>{
+        window.location='/team'
+    }
     return ( 
         <div className="blog-details">
             {isLoading && <div>Loading...</div> }
@@ -16,7 +19,7 @@ const ProjDetails = () => {
                     <h2>Manager: {proj.manager_name}</h2>
                     <p>Manager: {proj.manager_email}</p>
                     <div>Description: {proj.desc}</div>
-                    <Link to={`/team/`}>Team Details</Link>
+                    <button onClick={team}>Team Details</button>
                 </article>
             )}
             

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 
 const Incorrect = () => {
+    localStorage.setItem('username',"");
     const signup=()=>{
         window.location='/signup';
     }
