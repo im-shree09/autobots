@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 from django.urls import path,include
 from restapiapp import views
 
-
+from .views import *
 
 # creating router object
 router= DefaultRouter()
@@ -16,12 +16,20 @@ router.register('project_api',views.ProjectViewSet,basename='project')
 router.register(r'my_project_api',views.MyProjectViewSet,basename='myproject')
 router.register(r'my_team_api',views.MyTeamViewSet,basename='myteammember')
 router.register(r'my_team_member_api',views.MyTeamMemberViewSet,basename='myteam')
+# ===================================================================================================
+# router.register(r'loginn' , views.login , basename = 'loginn')
+# router.register('MyProjectTest' , views.MyProjectViewsetTest , basename='myProjectTest')
 # router.register('my_project_api',views.MyProjectViewSet,basename='myteam')
 # router.register('my_team_api',views.MyTeamViewSet,basename='myproject')
 # router.register('my_team_member_api',views.MyTeamMemberViewSet,basename='myteammember')
 
 
 urlpatterns = [
-    path("" , include(router.urls) , )
+    path("" , include(router.urls) , ),
+    # =================================================================================================
+    path('registerr/',RegisterUserAPIView.as_view()),
+    path("loginn/" , views.login ) ,
+
+
 ]
 

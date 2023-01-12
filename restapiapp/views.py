@@ -19,6 +19,26 @@ import requests
 import datetime
 from django.core.mail import send_mail
 
+# =====================================================================================================================
+
+from rest_framework.permissions import AllowAny
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import UserSerializer,RegisterSerializer , C_UserLoginSerializer
+from django.contrib.auth.models import User
+from rest_framework.authentication import TokenAuthentication
+from rest_framework import generics
+
+from rest_framework.response import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.views import APIView
+from django.contrib.auth import authenticate
+from rest_framework import viewsets
+
+
+
+
 
 class MyTeamViewSet(viewsets.ViewSet):
     # GET all students
@@ -83,12 +103,16 @@ class MyProjectViewSet(viewsets.ViewSet):
         return render(request, 'index.html', context)
         # return Response(serializer.data)
     # GET specific student
+
+
     def retrieve(self, request, pk=None):
         team_id=pk
         if team_id is not None:
-            team=MyProject.objects.get(team_id=team_id)
+            team=MyProject.objects.get(pk=team_id)
             serializer=MyProjectSerializer(team)  
             return Response(serializer.data)
+
+
     # POST student
     def create(self, request):
         serializer=MyProjectSerializer(data=request.data)
@@ -498,3 +522,54 @@ def sending_email():
 #         context['teachers'] = teachers
 #         context['events'] = events
 #         return context
+
+
+# -------------------------------------------------------------------------------------------------------------------------
+
+
+# class MyProjectViewsetTest(viewsets.ModelViewSet):
+#     queryset = MyProject.objects.all()
+#     serializer_class = MyProjectTest
+
+
+
+# =============================================================================================================================
+
+
+# =============================================================================================================
+
+# Class based view to Get User Details using Token Authentication
+class UserDetailAPI(APIView):
+  authentication_classes = (TokenAuthentication,)
+  permission_classes = (AllowAny,)
+  def get(self,request,*args,**kwargs):
+    user = User.objects.get(id=request.user.id)
+    serializer = UserSerializer(user)
+    return Response(serializer.data)
+
+#Class based view to register user
+class RegisterUserAPIView(generics.CreateAPIView):
+    permission_classes = (AllowAny,)
+    serializer_class = RegisterSerializer
+    def create(self , request):
+        serializer = RegisterSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response({'msg':'Data created!'}, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+
+
+
+
+@api_view(['POST'])
+def login(request):
+    serializer = C_UserLoginSerializer(data=request.data)
+
+    if serializer.is_valid(raise_exception=True):
+        username = serializer.data.get('username')
+        password = serializer.data.get('password')
+        user = authenticate(username=username, password=password)
+        if user is not None:
+            return Response({'msg': 'login Successfully'}, status=status.HTTP_200_OK)
+        return Response({'error': {'non_fields_error': 'email or password not valid'}}, status=status.HTTP_404_NOT_FOUND)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
