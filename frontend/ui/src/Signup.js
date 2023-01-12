@@ -10,6 +10,11 @@ const Signup = () => {
     const [password2,setCpassword]=useState('');
     const [isLoading,setIsLoading]=useState(false);
     const history= useHistory();
+
+    const login=()=>{
+        window.location='/login';
+    }
+
     const handleSubmit=(e)=>{
         e.preventDefault();
         const team={username,email, password,password2,first_name,last_name}
@@ -27,9 +32,10 @@ const Signup = () => {
     }
     return ( 
         <div className="create">
-            <h2>Autobots Signup Page </h2>
+            <h2 className="titles">Autobots Signup Page </h2>
             <form onSubmit={handleSubmit}>
-                <label>First Name:</label>
+                {/* <label>First Name:</label> */}
+                <h5>First Name</h5>
                 <input 
                     type='text' 
                     required
@@ -37,7 +43,7 @@ const Signup = () => {
                     onChange={(e)=>setFirstName(e.target.value)}
                 >
                 </input>
-                <label>Last Name:</label>
+                <h5>Last Name</h5>
                 <input 
                     type='text' 
                     required
@@ -45,7 +51,7 @@ const Signup = () => {
                     onChange={(e)=>setLastName(e.target.value)}
                 >
                 </input>
-                <label>Username:</label>
+                <h5>Username:</h5>
                 <input 
                     type='text' 
                     required
@@ -53,7 +59,7 @@ const Signup = () => {
                     onChange={(e)=>setUsername(e.target.value)}
                 >
                 </input>
-                <label>Email Id:</label>
+                <h5>Email Id:</h5>
                 <input 
                     type='text' 
                     required
@@ -61,21 +67,27 @@ const Signup = () => {
                     onChange={(e)=>setEmail(e.target.value)}
                 >
                 </input>
-                <label>Password:</label>
+                <h5>Password:</h5>
                 <input 
+                    type='password'
                     required
                     value={password}
                     onChange={(e)=> setPassword(e.target.value)}
                 >
                 </input>
-                <label>Confirm Password:</label>
+                <h5>Confirm Password:</h5>
                 <input 
+                    type='password'
                     required
                     value={password2}
                     onChange={(e)=> setCpassword(e.target.value)}
                 >
                 </input>
-                {!isLoading && <button>Login</button>}
+                {!isLoading && <button>Signup</button>}
+                {!isLoading && <div>
+                    <h6>Already have an account? Please Log in</h6>
+                    <button onClick={login}>Login</button>
+                </div>}
                 {isLoading && <button>Logging in...</button>}
             </form>
         </div>

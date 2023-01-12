@@ -6,6 +6,10 @@ const Login = () => {
     const [password,setPassword]=useState('');
     const [isLoading,setIsLoading]=useState(false);
     const history= useHistory();
+
+    const signup=()=>{
+        window.location='/signup';
+    }
     const handleSubmit=(e)=>{
         e.preventDefault();
         const team={username,password }
@@ -27,7 +31,7 @@ const Login = () => {
         <div className="create">
             <h2>Autobots Login Page </h2>
             <form onSubmit={handleSubmit}>
-                <label>Username:</label>
+                <h5>Username</h5>
                 <input 
                     type='text' 
                     required
@@ -35,14 +39,19 @@ const Login = () => {
                     onChange={(e)=>setUsername(e.target.value)}
                 >
                 </input>
-                <label>Password:</label>
+                <h5>Password</h5>
                 <input 
+                    type='password'
                     required
                     value={password}
                     onChange={(e)=> setPassword(e.target.value)}
                 >
                 </input>
                 {!isLoading && <button>Login</button>}
+                {!isLoading && <div>
+                    <h6>Do not have an account? Please Login</h6>
+                    <button onClick={signup}>Signup</button>
+                </div>}
                 {isLoading && <button>Logging in...</button>}
             </form>
         </div>

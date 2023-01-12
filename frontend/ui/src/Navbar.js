@@ -6,7 +6,7 @@ const Navbar = () => {
         setName('Afourathon')
     }
     const logout=()=>{
-        localStorage.setItem('username',null);
+        localStorage.setItem('username',"");
         console.log(localStorage.getItem('username'));
         window.location='/login';
     }
@@ -17,7 +17,7 @@ const Navbar = () => {
                 <a className="sub-name" href="/">Home</a>
                 <a className="sub-name" href="/team">Teams</a>
                 <a className="sub-name" href="/create-team">New Team</a>
-                <a className="sub-name" href="/create-team-members">New Team member</a>
+                <a className="sub-name" href="/create-team-members">New Member</a>
                 
                 <button onClick={logout}>Logout</button>
                 <button onClick={handleClick}>Click me</button>
