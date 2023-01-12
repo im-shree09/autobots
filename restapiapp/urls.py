@@ -2,8 +2,8 @@ from rest_framework.routers import DefaultRouter
 # from restapiapp.views import *
 from django.urls import path,include
 from restapiapp import views
-
 from .views import *
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
 
 # creating router object
 router= DefaultRouter()
@@ -29,6 +29,9 @@ urlpatterns = [
     # =================================================================================================
     path('registerr/',RegisterUserAPIView.as_view()),
     path("loginn/" , views.login ) ,
+    path("gettoken/" , TokenObtainPairView.as_view(), name='token_obtain_pair') ,
+    path("refreshtoken/" , TokenRefreshView.as_view(), name='token_refresh') ,
+    path("verifytoken/" , TokenVerifyView.as_view(), name='token_verify') ,
 
 
 ]

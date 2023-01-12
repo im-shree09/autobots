@@ -13,6 +13,7 @@ from rest_framework.response import Response
 from rest_framework import status,viewsets
 import json
 # AUTH
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from .customauth import CustomAuthentication
 from rest_framework.permissions import IsAuthenticated
 import requests
@@ -35,10 +36,6 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from django.contrib.auth import authenticate
 from rest_framework import viewsets
-
-
-
-
 
 class MyTeamViewSet(viewsets.ViewSet):
     # GET all teams
@@ -257,8 +254,8 @@ class StudentViewSet(viewsets.ViewSet):
 # ///////////////////////TEAM//////////////////
 class TeamViewSet(viewsets.ViewSet):
     # Custom AUTH
-    # authentication_classes=[CustomAuthentication]
-    # permission_classes=[IsAuthenticated]
+    authentication_classes=[JWTAuthentication]
+    permission_classes=[IsAuthenticated]
     # GET all students
     def list(self,request):
         stu= Team.objects.all()
