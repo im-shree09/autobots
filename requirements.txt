@@ -1,3 +1,4 @@
+#for backend
 asgiref==3.5.2
 certifi==2022.12.7
 charset-normalizer==2.1.1
@@ -11,3 +12,14 @@ tzdata==2022.7
 urllib3==1.26.13
 APScheduler==3.9.1.post1
 django-apscheduler==0.6.2
+
+#for frontend:
+"axios": "^1.2.2",
+"bootstrap": "^5.2.3",
+"formik": "^2.2.9",
+"react": "^18.2.0",
+"react-dom": "^18.2.0",
+"react-router-dom": "^5.3.4",
+"react-scripts": "5.0.1",
+"web-vitals": "^2.1.4",
+"yup": "^0.32.11"
