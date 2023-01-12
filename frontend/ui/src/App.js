@@ -14,6 +14,7 @@ import EditTeamMember from './EditTeamMember';
 import Login from './Login';
 import Signup from './Signup';
 import Incorrect from './Incorrect';
+import TeamMemberDetails from './TeamMemberDetails';
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
@@ -55,6 +56,9 @@ function App() {
             </Route>
             <Route path='/my_team_api/:id'>
               <TeamDetails/>
+            </Route>
+            <Route path='/my_team_member_api/:id'>
+              <TeamMemberDetails/>
             </Route>
             <Route path='/edit-team/:id'>
               <EditTeam/>

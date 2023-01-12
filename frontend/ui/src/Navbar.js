@@ -16,11 +16,12 @@ const Navbar = () => {
             <div className="links">
                 <a className="sub-name" href="/home">Home</a>
                 <a className="sub-name" href="/team">Teams</a>
+                <a className="sub-name" href="/team-members">Members</a>
                 <a className="sub-name" href="/create-team">New Team</a>
                 <a className="sub-name" href="/create-team-members">New Member</a>
                 
                 <button onClick={logout}>Logout</button>
-                <button onClick={handleClick}>Click me</button>
+                {/* <button onClick={handleClick}>Click me</button> */}
             </div>
         </nav>
      );
