@@ -2,7 +2,7 @@ FROM python
 
 
 WORKDIR /usr/src/autobots-container-3
-COPY requirements.txt requirements.txt  
+COPY requirements.txt ./ 
 RUN pip install -r requirements.txt
 COPY . .
 

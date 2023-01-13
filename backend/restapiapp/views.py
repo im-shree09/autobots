@@ -481,7 +481,7 @@ def sending_email():
         print(email)
         email_list.append(email)
     print("printing the email list in sending mail function == >> " , email_list)
-    url2 = "http://127.0.0.1:8000/project_api/"
+    url2 = "http://127.0.0.1:8000/my_project_api/"
     req2 = requests.get(url2)
     response2 = req2.json()
     print("this is UPDATE PART")
