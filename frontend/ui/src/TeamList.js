@@ -7,8 +7,8 @@ const TeamList = ({teams,title}) => {
                 <div className="blog-preview" key={team.team_id}>
                     <Link to={`/my_team_api/${team.team_id}`}>
                         <h2>Team Name: {team.team_name}</h2>
-                        <p>Team Lead: {team.team_lead}</p>
-                        <p>Project: {team.proj_name}</p>
+                        <h5>Team Lead: {team.team_lead}</h5>
+                        <h5>Project: {team.proj_name}</h5>
                     </Link>
                 </div>
             ))}

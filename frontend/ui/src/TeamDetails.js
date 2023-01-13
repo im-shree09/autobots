@@ -9,12 +9,15 @@ const TeamDetails = () => {
     const handleEdit=()=>{
         history.push(`/edit-team/${id}`);
     }
-    console.log(id.id)
+    const members=()=>{
+        window.location='/team-members'
+    }
+    // console.log(id.id)
     const handleClick=()=>{
         fetch('http://localhost:8000/my_team_api/' + proj.team_id,{
             method:'DELETE',
         }).then(()=>{
-            history.push('/');
+            history.push('/home');
         })
     }
     return ( 
@@ -25,12 +28,13 @@ const TeamDetails = () => {
                 <article>
                     <h2>Team Id: {id}</h2>
                     <h2>Team Name: {proj.team_name}</h2>
-                    <h2>Team lead: {proj.team_lead}</h2>
-                    <p>Email: {proj.team_lead_email}</p>
-                    <Link to={`/team-members`}>Team Member Details</Link>
-                    <p></p>
+                    <h5>Team lead: {proj.team_lead}</h5>
+                    <h5>Email: {proj.team_lead_email}</h5>
+                    <h5>Start Date: {proj.team_start_date}</h5>
                     <button onClick={handleEdit}>Edit</button>
                     <button onClick={handleClick}>Delete</button>
+                    <p></p>
+                    <button onClick={members}>Team Members</button>
                 </article>
             )}
                 

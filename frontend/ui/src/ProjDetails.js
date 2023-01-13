@@ -16,9 +16,9 @@ const ProjDetails = () => {
                 <article>
                     <h2>Id: {proj.proj_id}</h2>
                     <h2>Project: {proj.proj_name}</h2>
-                    <h2>Manager: {proj.manager_name}</h2>
-                    <p>Manager: {proj.manager_email}</p>
-                    <div>Description: {proj.desc}</div>
+                    <h4>Manager: {proj.manager_name}</h4>
+                    <h4>Manager: {proj.manager_email}</h4>
+                    <h5>Description: {proj.desc}</h5>
                     <button onClick={team}>Team Details</button>
                 </article>
             )}

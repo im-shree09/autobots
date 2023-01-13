@@ -51,7 +51,7 @@ const Signup = () => {
                     onChange={(e)=>setLastName(e.target.value)}
                 >
                 </input>
-                <h5>Username:</h5>
+                <h5>Username</h5>
                 <input 
                     type='text' 
                     required
@@ -59,7 +59,7 @@ const Signup = () => {
                     onChange={(e)=>setUsername(e.target.value)}
                 >
                 </input>
-                <h5>Email Id:</h5>
+                <h5>Email Id</h5>
                 <input 
                     type='text' 
                     required
@@ -67,7 +67,7 @@ const Signup = () => {
                     onChange={(e)=>setEmail(e.target.value)}
                 >
                 </input>
-                <h5>Password:</h5>
+                <h5>Password</h5>
                 <input 
                     type='password'
                     required
@@ -75,7 +75,7 @@ const Signup = () => {
                     onChange={(e)=> setPassword(e.target.value)}
                 >
                 </input>
-                <h5>Confirm Password:</h5>
+                <h5>Confirm Password</h5>
                 <input 
                     type='password'
                     required
