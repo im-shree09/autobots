@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom'
 
 const TeamDetails = () => {
     const { id } = useParams();
-    const {data:proj, error, isLoading} = useFetch('http://localhost:8000/my_team_api/' + id);
+    const {data:proj, error, isLoading} = useFetch('http://54.212.0.128:8000/my_team_api/' + id);
     const history= useHistory()
     const handleEdit=()=>{
         history.push(`/edit-team/${id}`);
@@ -14,8 +14,8 @@ const TeamDetails = () => {
     }
     // console.log(id.id)
     const handleClick=()=>{
-        fetch('http://localhost:8000/my_team_api/' + proj.team_id,{
-            method:'DELETE',
+        fetch('http://54.212.0.128:8000/my_team_api/' + proj.team_id,{
+            method:'GET',
         }).then(()=>{
             history.push('/home');
         })

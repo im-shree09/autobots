@@ -24,7 +24,7 @@ const EditTeam = () => {
         console.log(team);
         setIsLoading(true);
         try{
-            fetch(`http://localhost:8000/my_team_api/${id.id}/`,{
+            fetch(`http://54.212.0.128:8000/my_team_api/${id.id}/`,{
             method: 'PATCH',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)

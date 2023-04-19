@@ -5,13 +5,13 @@ import {Link} from 'react-router-dom'
 const TeamMemberDetails = () => {
     const history=useHistory()
     const { id } = useParams();
-    const {data:proj, error, isLoading} = useFetch('http://localhost:8000/my_team_member_api/' + id);
+    const {data:proj, error, isLoading} = useFetch('http://54.212.0.128:8000/my_team_member_api/' + id);
     const handleEdit=()=>{
         // history.push(`/edit-member/${id}`);
         window.location='/edit-member/'+id;
     }
     const handleClick=()=>{
-        fetch('http://localhost:8000/my_team_member_api/' + id,{
+        fetch('http://54.212.0.128:8000/my_team_member_api/' + id,{
             method:'DELETE',
         }).then(()=>{
             history.push('/home');

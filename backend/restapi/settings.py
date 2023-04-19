@@ -149,6 +149,7 @@ REST_FRAMEWORK = {
 
 CORS_ALLOWED_ORIGINS = [
    'http://localhost:3000',
+   'http://192.168.43.165:3000 ',
 ]
 
 SIMPLE_JWT={
@@ -161,3 +162,5 @@ EMAIL_HOST_USER = 'autobots815@gmail.com'
 EMAIL_HOST_PASSWORD = 'eagztgbnyqxskofv'
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST_USER='autobots21520011@gmail.com'
+# EMAIL_HOST_PASSWORD = 'mpgveticmzufppmq'

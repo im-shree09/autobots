@@ -11,9 +11,6 @@ from rest_framework.validators import UniqueValidator
 from django.contrib.auth.password_validation import validate_password
 
 
-
-
-
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
         model=Student

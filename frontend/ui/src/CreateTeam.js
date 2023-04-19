@@ -22,7 +22,7 @@ const CreateTeam = () => {
         const team={team_name, team_start_date, team_end_date, team_lead, team_lead_email, proj_name}
         console.log(team);
         setIsLoading(true);
-        fetch('http://localhost:8000/my_team_api/',{
+        fetch('http://54.212.0.128:8000/my_team_api/',{
             method: 'POST',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)

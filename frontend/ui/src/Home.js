@@ -5,8 +5,8 @@ const Home = () => {
     const token=localStorage.getItem('username')
     
 
-    const {data:projs, isLoading,error} = useFetch('http://127.0.0.1:8000/my_project_api/')
-    const {data:teams} = useFetch('http://127.0.0.1:8000/my_team_api/')
+    const {data:projs, isLoading,error} = useFetch('http://54.212.0.128:8000/my_project_api/')
+    const {data:teams} = useFetch('http://54.212.0.128:8000/my_team_api/')
     // if(!token)
     // {
     //     console.log(token);

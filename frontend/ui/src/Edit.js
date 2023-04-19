@@ -27,7 +27,7 @@ const Edit = () => {
     useEffect(() => {
         async function getTeam() {
             try {
-                const team = await axios.get(`http://localhost:8000/my_team_api/${id}`)
+                const team = await axios.get(`http://54.212.0.128:8000/my_team_api/${id}`)
                 // console.log(student.data);
                 setTeam(team.data);
             } catch (error) {
@@ -47,7 +47,7 @@ const Edit = () => {
     async function handleSubmit(e) {
         e.preventDefault()
         try {
-            await axios.put(`http://localhost:8000/my_team_api/${id}`, team)
+            await axios.put(`http://54.212.0.128:8000/my_team_api/${id}`, team)
             history.push("/")
         } catch (error) {
             console.log("Something is Wrong");

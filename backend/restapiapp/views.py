@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Student, Project, Team, TeamMember, MyProject,MyTeam,MyTeamMember
-# from .serializers import StudentSerializer, ProjectSerializer, TeamSerializer, TeamMemberSerializer
 from .serializers import *
 from rest_framework.renderers import JSONRenderer
 from rest_framework.parsers import JSONParser

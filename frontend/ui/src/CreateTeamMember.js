@@ -19,7 +19,7 @@ const CreateTeamMember = () => {
         const team={name, role, email, team_name}
         console.log(team);
         setIsLoading(true);
-        fetch('http://localhost:8000/my_team_member_api/',{
+        fetch('http://54.212.0.128:8000/my_team_member_api/',{
             method: 'POST',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)
@@ -66,7 +66,7 @@ const CreateTeamMember = () => {
                     >
                     </input>
 
-                    {!isLoading && <button>Add Team</button>}
+                    {!isLoading && <button>Add Team Member</button>}
                     {isLoading && <button>Adding Team...</button>}
                 </form>
             </div>

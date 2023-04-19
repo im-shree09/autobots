@@ -17,7 +17,7 @@ const Login = () => {
         const team={username,password }
         console.log(team);
         setIsLoading(true);
-        fetch('http://127.0.0.1:8000/loginn/',{
+        fetch('http://54.212.0.128:8000/loginn/',{
             method: 'POST',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)

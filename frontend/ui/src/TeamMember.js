@@ -2,7 +2,7 @@ import TeamMemberList from './TeamMemberList';
 import useFetch from './useFetch';
 
 const TeamMember = () => {
-    const {data:teams, isLoading,error} = useFetch('http://127.0.0.1:8000/my_team_member_api/')
+    const {data:teams, isLoading,error} = useFetch('http://54.212.0.128:8000/my_team_member_api/')
     return ( 
         <div className="home">
             {error && <div>{error}</div>}

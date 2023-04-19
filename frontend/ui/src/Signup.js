@@ -20,12 +20,12 @@ const Signup = () => {
         const team={username,email, password,password2,first_name,last_name}
         // console.log(team);
         setIsLoading(true);
-        fetch('http://127.0.0.1:8000/registerr/',{
+        fetch('http://54.212.0.128:8000/registerr/',{
             method: 'POST',
             headers: {'content-type':'application/json'},
             body: JSON.stringify(team)
         }).then(()=>{
-            console.log('New team added!');
+            console.log('New user added!');
             setIsLoading(false);
             history.push('/');
         })
@@ -37,6 +37,7 @@ const Signup = () => {
                 {/* <label>First Name:</label> */}
                 <h5>First Name</h5>
                 <input 
+                    placeholder="First Name"
                     type='text' 
                     required
                     value={first_name}
@@ -45,6 +46,7 @@ const Signup = () => {
                 </input>
                 <h5>Last Name</h5>
                 <input 
+                    placeholder="Last Name"
                     type='text' 
                     required
                     value={last_name}
@@ -53,6 +55,7 @@ const Signup = () => {
                 </input>
                 <h5>Username</h5>
                 <input 
+                placeholder="Username"
                     type='text' 
                     required
                     value={username}
@@ -61,6 +64,7 @@ const Signup = () => {
                 </input>
                 <h5>Email Id</h5>
                 <input 
+                placeholder="Email id"
                     type='text' 
                     required
                     value={email}
@@ -69,6 +73,7 @@ const Signup = () => {
                 </input>
                 <h5>Password</h5>
                 <input 
+                placeholder="Password: Length should greater than 8"
                     type='password'
                     required
                     value={password}
